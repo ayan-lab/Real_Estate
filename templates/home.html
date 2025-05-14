@@ -1,0 +1,1926 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Realestate - Choose your dream home</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!--css-->
+    <style>
+      :root {
+        /*======== colors =========*/
+
+        --oxford-blue_60: hsla(224, 34%, 13%, 0.6);
+        --green-pigment: hsl(202, 86%, 51%);
+        --oxford-blue: hsl(224, 34%, 13%);
+        --maximum-red: hsl(0, 72%, 51%);
+        --eerie-black: hsl(0, 0%, 9%);
+        --mint-cream: hsl(146, 41%, 97%);
+        --cadet-gray: hsl(215, 20%, 65%);
+        --light-gray: hsl(216, 12%, 84%);
+        --carcoal_20: hsla(214, 19%, 29%, 0.2);
+        --carcoal_15: hsla(214, 19%, 29%, 0.15);
+        --carcoal_10: hsla(214, 19%, 29%, 0.1);
+        --sea-green: hsl(205, 77%, 41%);
+        --gainsboro: hsl(220, 13%, 91%);
+        --white_70: hsla(0, 0%, 100%, 0.7);
+        --gunmetal: hsl(215, 28%, 17%);
+        --manatee: hsl(218, 11%, 65%);
+        --mango: hsl(43, 96%, 56%);
+        --white: hsl(0, 0%, 100%);
+        --black: hsl(0, 0%, 0%);
+
+        /*======= typography ========*/
+
+        --ff-spartan: "League Spartan", sans-serif;
+
+        --fs-1: 3.6rem;
+        --fs-2: 2.4rem;
+        --fs-3: 2rem;
+        --fs-4: 1.8rem;
+        --fs-5: 1.7rem;
+
+        --fw-600: 600;
+        --fw-500: 500;
+
+        /*======== spacing =========*/
+
+        --section-padding: 35px;
+
+        /*======= shadow =======*/
+
+        --shadow-1: 0 1px 2px hsla(0, 0%, 0%, 0.2);
+        --shadow-2: 0 10px 15px -5px var(--carcoal_20);
+        --shadow-3: 0 10px 25px -3px var(--carcoal_20);
+        --shadow-4: 0 0 3px var(--carcoal_15);
+        --shadow-5: 0 20px 25px -5px var(--carcoal_10),
+          0 10px 10px -5px var(--carcoal_10);
+
+        /*======== border radius ========*/
+
+        --radius-16: 16px;
+        --radius-12: 12px;
+        --radius-6: 6px;
+        --radius-4: 4px;
+
+        /*======== transition =========*/
+
+        --transition: 0.25s ease;
+        --cubic-out: cubic-bezier(0.33, 0.85, 0.4, 0.96);
+      }
+      /*========= RESET =========*/
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      li {
+        list-style: none;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      a,
+      img,
+      span,
+      label,
+      input,
+      select,
+      button,
+      ion-icon {
+        display: block;
+      }
+
+      img {
+        height: auto;
+      }
+
+      input,
+      select,
+      button {
+        background: none;
+        border: none;
+        font: inherit;
+      }
+
+      input,
+      select {
+        width: 100%;
+      }
+
+      button {
+        cursor: pointer;
+      }
+
+      ion-icon {
+        pointer-events: none;
+      }
+
+      address {
+        font-style: normal;
+      }
+
+      html {
+        font-family: var(--ff-spartan);
+        font-size: 10px;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background-color: var(--white);
+        font-size: var(--fs-5);
+        color: var(--cadet-gray);
+      }
+
+      /*======== REUSABLE STYLE ==========*/
+
+      .container {
+        padding-inline: 15px;
+      }
+
+      .btn {
+        background-color: var(--green-pigment);
+        color: var(--white);
+        font-weight: var(--fw-500);
+        max-width: max-content;
+        padding: var(--padding, 12px 28px);
+      }
+
+      .btn:is(:hover, :focus) {
+        background-color: var(--sea-green);
+      }
+
+      .btn-secondary {
+        border-radius: 50px;
+      }
+
+      .btn-primary {
+        border-radius: var(--radius-6);
+      }
+
+      .h1 {
+        font-size: var(--fs-1);
+      }
+
+      .h2,
+      .h3 {
+        color: var(--oxford-blue);
+        line-height: 1.5;
+      }
+
+      .h2 {
+        font-size: var(--fs-2);
+        font-weight: var(--fw-500);
+      }
+
+      .h3 {
+        font-size: var(--fs-3);
+        font-weight: var(--fw-500);
+      }
+
+      .section {
+        padding-block: var(--section-padding);
+      }
+
+      .img-holder {
+        aspect-ratio: var(--width) / var(--height);
+        background-color: var(--gainsboro);
+      }
+
+      .img-cover {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .section-title {
+        color: var(--oxford-blue);
+      }
+
+      .section-text {
+        line-height: 1.6;
+      }
+
+      /*======== HEADER STYLE =========*/
+      .header {
+        background-color: var(--white);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding-block: 15px;
+        z-index: 4;
+      }
+
+      .header.active {
+        box-shadow: var(--shadow-1);
+      }
+
+      .header > .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .logo {
+        font-size: 2.2rem;
+        font-weight: var(--fw-600);
+        color: var(--black);
+      }
+
+      .logo ion-icon {
+        display: inline-block;
+        color: var(--sea-green);
+        --ionicon-stroke-width: 50px;
+      }
+
+      .nav-toggle-btn {
+        font-size: 35px;
+        color: var(--oxford-blue);
+      }
+
+      .nav-toggle-btn ion-icon {
+        --ionicon-stroke-width: 30px;
+      }
+
+      .nav-toggle-btn.active .menu-icon,
+      .nav-toggle-btn .close-icon {
+        display: none;
+      }
+
+      .nav-toggle-btn .menu-icon,
+      .nav-toggle-btn.active .close-icon {
+        display: block;
+      }
+
+      .header .btn {
+        margin-inline-start: auto;
+      }
+
+      .navbar {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        background-color: var(--white);
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        visibility: visible;
+        transition: 0.25s var(--cubic-out);
+      }
+
+      .navbar.active {
+        max-height: 260px;
+        visibility: visible;
+        box-shadow: var(--shadow-1);
+        transition-duration: 0.5s;
+      }
+
+      .navbar-list {
+        margin-block: 10px;
+        opacity: 0;
+        transition: var(--transition);
+      }
+
+      .navbar.active .navbar-list {
+        opacity: 1;
+      }
+
+      .navbar-link {
+        color: var(--oxford-blue);
+        font-weight: var(--fw-500);
+        letter-spacing: 1px;
+        padding: 12px 25px;
+      }
+
+      .navbar-link:is(hover, :focus) {
+        color: var(--green-pigment);
+      }
+
+      /*=========== main ==========*/
+      .article {
+        position: relative;
+      }
+
+      .hero {
+        padding-block-start: 80px;
+      }
+
+      .hero-bg {
+        background-image: url("https://i0.wp.com/freshouz.com/wp-content/uploads/2018/04/Exterior-House-Paint-Color-Schemes-16.jpg?fit=2250%2C1500&ssl=1");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        border-radius: var(--radius-16);
+        overflow: hidden;
+      }
+
+      .hero-content {
+        background-color: var(--oxford-blue_60);
+        padding-block: 180px;
+        padding-inline: 40px;
+        display: grid;
+        grid-template-columns: 1fr;
+        place-content: center;
+        text-align: center;
+      }
+
+      .hero-title {
+        max-width: 16ch;
+        margin-inline: auto;
+        color: var(--white);
+        line-height: 1.5;
+        margin-block-end: 20px;
+      }
+
+      .hero-title .span {
+        display: inline-block;
+        color: var(--green-pigment);
+      }
+
+      .hero-form-wrapper {
+        background-color: var(--white);
+        margin-block-start: -100px;
+        width: calc(100% - 10px);
+        margin-inline: auto;
+        border-radius: var(--radius-16);
+        box-shadow: var(--shadow-2);
+        overflow: hidden;
+      }
+
+      .form-tab {
+        padding: 16px;
+        border-block-end: 1px solid var(--gainsboro);
+        display: flex;
+        justify-content: center;
+      }
+
+      .tab-btn {
+        padding: 12px 24px;
+        color: var(--oxford-blue);
+        font-weight: var(--fw-500);
+        border-radius: var(--radius-6);
+        transition: var(--transition);
+      }
+
+      .tab-btn :is(:hover, :focus) {
+        color: var(--white);
+        background-color: var(--green-pigment);
+      }
+
+      .hero-form {
+        display: grid;
+        gap: 25px;
+        padding: 25px;
+      }
+
+      .hero-form .input-wrapper {
+        position: relative;
+      }
+
+      .hero-form:is(.input-label, .input-field) {
+        color: var(--oxford-blue);
+      }
+
+      .hero-form .input-label {
+        font-weight: var(--fw-500);
+        margin-block-end: 10px;
+      }
+
+      .hero-form :is(.input-field, .dropdown-list) {
+        min-height: 40px;
+        border: 1px solid var(--gainsboro);
+        border-radius: var(--radius-4);
+        outline: none;
+        transition: var(--transition);
+      }
+
+      .hero-form :is(.input-field, .dropdown-list):focus {
+        border-color: var(--green-pigment);
+      }
+
+      .hero-form .input-wrapper ion-icon {
+        position: absolute;
+        top: 50%;
+        transform: translateY(20%);
+        left: 15px;
+        color: var(--oxford-blue);
+        --ionicon-stroke-width: 20px;
+      }
+
+      .hero-form .input-field {
+        padding-inline: 45px 15px;
+      }
+
+      .hero-form .input-field::placeholder {
+        color: var(--manatee);
+      }
+
+      .hero-form .dropdown-lis {
+        padding-inline: 15px;
+      }
+
+      .hero-form .btn {
+        max-width: 100%;
+      }
+      .prediction {
+        margin-top: 20px;
+        padding: 15px;
+        background-color: var(--gainsboro);
+        border-radius: var(--radius-8);
+        text-align: center;
+        font-weight: var(--fw-500);
+        color: var(--oxford-blue);
+      }
+      /*========== ABOUT ==========*/
+      .about .section-title {
+        max-width: 20ch;
+      }
+
+      .about-banner {
+        position: relative;
+        overflow: hidden;
+        border-radius: var(--radius-16);
+        margin-block-end: 30px;
+      }
+
+      .about-banner .play-btn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: var(--white);
+        color: var(--green-pigment);
+        padding: 30px;
+        font-size: 20px;
+        border-radius: 50px;
+      }
+
+      .about .section-text {
+        margin-block: 20px 25px;
+      }
+
+      /*========== SERVICES =========*/
+
+      .service :is(.section-title, .section-text) {
+        text-align: center;
+      }
+
+      .service .section-text {
+        margin-block: 15px 16px;
+      }
+
+      .service-list {
+        display: grid;
+        gap: 30px;
+      }
+
+      .service-card {
+        text-align: center;
+        border-radius: 10px;
+        transition: 0.3s;
+        padding: 10px;
+      }
+
+      .service-card:hover {
+        box-shadow: var(--shadow-5);
+      }
+
+      .service-card .card-icon {
+        background-color: var(--mint-cream);
+        width: 100px;
+        height: 100px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        margin-inline: auto;
+      }
+
+      .service-card .card-icon ion-icon {
+        font-size: 30px;
+        color: var(--green-pigment);
+        --ionicon-stroke-width: 45px;
+      }
+
+      .service-card .card-title {
+        margin-block: 25px 12px;
+      }
+
+      .service-card .card-text {
+        line-height: 1.6;
+      }
+
+      /*========== CONTACT =========*/
+      .contact {
+        padding-block-end: calc(var(--section-padding) * 2);
+        text-align: center;
+      }
+
+      .contact .section-title {
+        font-weight: var(--fw-500);
+      }
+
+      .contact .section-text {
+        margin-block-end: 25px;
+      }
+
+      .contact .btn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-inline: auto;
+      }
+
+      .contact .btn ion-icon {
+        --ionicon-stroke-width: 50px;
+      }
+
+      /*=========== FOOTER ===========*/
+
+      .footer {
+        background-color: var(--eerie-black);
+        color: var(--light-gray);
+        margin-block-start: 100px;
+        padding-block-start: 190px;
+      }
+
+      .footer .logo {
+        color: var(--white);
+        font-weight: var(--fw-500);
+        margin-block-end: 25px;
+      }
+
+      .footer-text {
+        line-height: 1.6;
+      }
+
+      .footer-top {
+        padding-block: 60px;
+      }
+
+      .footer-top .container {
+        display: grid;
+        gap: 30px;
+      }
+
+      .footer-list-title {
+        color: var(--mint-cream);
+        font-weight: var(--fw-600);
+        letter-spacing: 1px;
+        margin-block-end: 25px;
+      }
+
+      .footer-list li:not(:last-child) {
+        margin-block-end: 15px;
+      }
+
+      .footer-link {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        transition: var(--transition);
+      }
+
+      .footer-link ion-icon {
+        font-size: 14px;
+      }
+
+      .footer-link:is(:hover, :focus) {
+        opacity: 0.8px;
+      }
+
+      .footer-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .footer-item:nth-child(2) {
+        align-items: flex-start;
+      }
+
+      .footer-list .footer-item:not(:last-child) {
+        margin-block-end: 25px;
+      }
+
+      .address {
+        line-height: 1.5;
+      }
+
+      .address-link {
+        color: var(--green-pigment);
+        margin-block-start: 10px;
+        transition: var(--transition);
+      }
+
+      .address-link:is(:hover, :focus) {
+        opacity: 0.8;
+      }
+
+      .footer-bottom {
+        border-block-start: 1px solid var(--gunmetal);
+        padding-block: 30px;
+        text-align: center;
+      }
+
+      .copyright {
+        line-height: 1.6;
+        margin-block-end: 30px;
+      }
+
+      .copyright-link {
+        display: inline-block;
+      }
+
+      .social-list {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .social-link {
+        color: var(--manatee);
+        border: 1px solid var(--gunmetal);
+        padding: 4px;
+        border-radius: var(--radius-6);
+      }
+
+      .social-link:is(:hover, :focus) {
+        background-color: var(--green-pigment);
+        border-color: var(--green-pigment);
+        color: var(--white);
+      }
+
+      /* back to top */
+
+      .back-top-btn {
+        position: fixed;
+        bottom: 10px;
+        right: 20px;
+        background-color: var(--green-pigment);
+        color: white;
+        font-size: 14px;
+        padding: 12px;
+        border-radius: 50px;
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition);
+        z-index: 4;
+      }
+
+      .back-top-btn:active {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(-10px);
+      }
+
+      /*=========== Media Queries */
+
+      @media (min-width: 640px) {
+        .container {
+          max-width: 640px;
+          width: 100%;
+          margin-inline: auto;
+        }
+
+        .hero .container {
+          max-width: unset;
+        }
+
+        .hero-form-wrapper {
+          max-width: 600px;
+          margin-inline: auto;
+          background-color: unset;
+        }
+
+        .hero .form-tab,
+        .hero-form {
+          background-color: var(--white);
+        }
+
+        .hero .form-tab {
+          max-width: max-content;
+          border-top-left-radius: var(--radius-16);
+          border-top-right-radius: var(--radius-16);
+        }
+
+        .hero-form {
+          border-top-right-radius: var(--radius-16);
+        }
+
+        .footer {
+          padding-block-start: 130px;
+        }
+      }
+
+      @media (min-width: 768px) {
+        :root {
+          --fs-2: 3rem;
+        }
+
+        .container,
+        .hero-form-wrapper {
+          max-width: 700px;
+        }
+
+        .section-text {
+          max-width: 55ch;
+          margin-inline: auto;
+        }
+
+        .hero-content {
+          text-align: left;
+          padding-inline: calc(50% - 350px);
+        }
+
+        .hero-title {
+          margin-inline: 0;
+        }
+
+        .hero-text {
+          max-width: 50ch;
+        }
+
+        .hero-form {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .about .container {
+          display: grid;
+          grid-template-columns: 0.7fr 1fr;
+          align-items: center;
+          gap: 30px;
+        }
+
+        .about-banner {
+          margin-block-end: 0;
+        }
+
+        .service-list,
+        .property-list {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .footer {
+          padding-block-start: 80px;
+        }
+
+        .footer-top .container {
+          grid-template-columns: repeat(3, 1fr);
+          row-gap: 50px;
+        }
+
+        .footer-brand {
+          grid-column: 1 / 4;
+        }
+
+        .footer-bottom .container {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .copyright {
+          margin-block-end: 0;
+        }
+      }
+
+      @media (min-width: 992px) {
+        :root {
+          --fs-1: 4.8rem;
+          --section-padding: 40px;
+        }
+
+        .container,
+        .hero-form-wrapper {
+          max-width: 900px;
+        }
+
+        .header > .container {
+          gap: 30px;
+        }
+
+        .nav-toggle-btn {
+          display: none;
+        }
+
+        .navbar,
+        .navbar.active {
+          all: unset;
+          margin-inline-start: auto;
+        }
+
+        .navbar-list {
+          margin-block: 0;
+          opacity: 1;
+          display: flex;
+        }
+
+        .navbar-link {
+          padding-inline: 20px;
+        }
+
+        .header .btn {
+          margin-inline-start: 0;
+        }
+
+        .hero-content {
+          padding-inline: calc(50% - 450px);
+        }
+
+        .hero-form {
+          grid-template-columns: repeat(4, 1fr);
+        }
+
+        .about .container {
+          gap: 50px;
+        }
+
+        .service-list,
+        .property-list {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .footer-brand {
+          grid-column: auto;
+        }
+
+        .footer-top .container {
+          grid-template-columns: 1fr 0.5fr 0.6fr 0.7fr;
+        }
+      }
+
+      @media (min-width: 1200px) {
+        .container,
+        .hero-form-wrapper {
+          max-width: 1120px;
+        }
+
+        .hero-content {
+          padding-inline: calc(50% - 560px);
+        }
+
+        .about .section-text {
+          max-width: unset;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .wrapper .text {
+          width: 80%;
+        }
+
+        .wrapper .text {
+          height: 600px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!--navbar-->
+    <header class="header" data-header>
+      <div class="container">
+        <a href="" class="logo">
+          <ion-icon name="home-outline"></ion-icon> Realestate
+        </a>
+
+        <nav class="navbar container" data-navbar>
+          <ul class="navbar-list">
+            <li>
+              <a href="#important" class="navbar-link" data-nav-link>Predict</a>
+            </li>
+            <li>
+              <a href="#contact" class="navbar-link" data-nav-link>Contact</a>
+            </li>
+            <li>
+              <a href="#About" class="navbar-link" data-nav-link>About Us</a>
+            </li>
+          </ul>
+        </nav>
+
+        <button
+          class="nav-toggle-btn"
+          aria-label="Toggle menu"
+          data-nav-toggler
+        >
+          <ion-icon
+            name="menu-outline"
+            aria-hidden="true"
+            class="menu-icon"
+          ></ion-icon>
+          <ion-icon
+            name="close-outline"
+            aria-hidden="trur"
+            class="close-icon"
+          ></ion-icon>
+        </button>
+      </div>
+    </header>
+
+    <!-- main -->
+    <main>
+      <article class="article">
+        <section class="section hero" aria-label="hero">
+          <div class="container">
+            <div class="hero-bg">
+              <div class="hero-content">
+                <h1 class="h1 hero-title">
+                  We will help you find your
+                  <span class="span">Dream</span> home in
+                  <span class="span">Delhi</span>
+                </h1>
+
+                <p class="hero-text">Find your dream home in Delhi today</p>
+              </div>
+            </div>
+
+            <div class="hero-form-wrapper" id="important">
+              <!--form-->
+              <form
+                action="{{url_for('predict')}}"
+                method="post"
+                class="hero-form"
+              >
+                <div class="input-wrapper">
+                  <label for="search" class="input-label">Area: *</label>
+                  <input
+                    type="text"
+                    name="area"
+                    placeholder="Area (sq ft)"
+                    required
+                    class="input-field"
+                  />
+                  <ion-icon name="search-outline"></ion-icon>
+                </div>
+                <div class="input-wrapper">
+                  <label for="search" class="input-label">BHK: *</label>
+                  <input
+                    type="text"
+                    name="bhk"
+                    placeholder="BHK"
+                    required
+                    class="input-field"
+                  />
+                  <ion-icon name="search-outline"></ion-icon>
+                </div>
+                <div class="input-wrapper">
+                  <label for="search" class="input-label">Bathrooms: *</label>
+                  <input
+                    type="text"
+                    name="bathroom"
+                    placeholder="Bathrooms"
+                    required
+                    class="input-field"
+                  />
+                  <ion-icon name="search-outline"></ion-icon>
+                </div>
+
+                <div class="input-wrapper">
+                  <label for="max-price" class="input-label"
+                    >Furnishing :</label
+                  >
+                  <select
+                    name="furnish"
+                    id="max-price"
+                    class="dropdown-list"
+                    required
+                  >
+                    <option value="0">Unfurnished</option>
+                    <option value="1">Semi Furnished</option>
+                    <option value="2">Furnished</option>
+                  </select>
+                </div>
+
+                <!-- location -->
+                <div class="input-wrapper">
+                  <label for="max-price" class="input-label">Locality :</label>
+                  <select
+                    name="locality"
+                    id="max-price"
+                    class="dropdown-list"
+                    required
+                  >
+                    <option value="0">Rohini Sector 25</option>
+                    <option value="1">
+                      J R Designers Floors, Rohini Sector 24
+                    </option>
+                    <option value="2">
+                      Citizen Apartment, Rohini Sector 13
+                    </option>
+                    <option value="3">Rohini Sector 24</option>
+                    <option value="4">Delhi Homes, Rohini Sector 24</option>
+                    <option value="5">Rohini Sector 21</option>
+                    <option value="6">Rohini Sector 22</option>
+                    <option value="7">Rohini Sector 20</option>
+                    <option value="8">Rohini Sector 8</option>
+                    <option value="9">Rohini Sector 16</option>
+                    <option value="10">Rohini Sector 14</option>
+                    <option value="11">Rohini Sector 9</option>
+                    <option value="12">Vijay Vihar, Rohini</option>
+                    <option value="13">Rohini Sector 18</option>
+                    <option value="14">Prashant Vihar, Rohini</option>
+                    <option value="15">Rohini Sector 5</option>
+                    <option value="16">
+                      Sanskriti Apartment, Rohini Sector 28
+                    </option>
+                    <option value="17">Rohini Sector 19</option>
+                    <option value="18">Lajpat Nagar 2</option>
+                    <option value="19">Lajpat Nagar 1</option>
+                    <option value="20">Lajpat Nagar</option>
+                    <option value="21">Vikram Vihar, Lajpat Nagar</option>
+                    <option value="22">Lajpat Nagar 4</option>
+                    <option value="23">Lajpat Nagar 3</option>
+                    <option value="24">Dayanand Colony</option>
+                    <option value="25">Amar Colony, Lajpat Nagar</option>
+                    <option value="26">
+                      DDA Flats Sector 14, Dwarka Sector 14
+                    </option>
+                    <option value="27">
+                      Siddhartha Heights, Dwarka Sector 24
+                    </option>
+                    <option value="28">
+                      MTNL Employees House Welfare Society, Dwarka Sector 24
+                    </option>
+                    <option value="29">
+                      Delhi Homes Yojana, Dwarka Sector 24
+                    </option>
+                    <option value="30">
+                      The Elite Spire, Dwarka Sector 21
+                    </option>
+                    <option value="31">
+                      Kunj Vihar Apartment, Dwarka Sector 12
+                    </option>
+                    <option value="32">
+                      Ashirwad Apartments, Dwarka Sector 12
+                    </option>
+                    <option value="33">Sunny Valley Apartments, Dwarka</option>
+                    <option value="34">
+                      Shri Agrasen Apartment, Dwarka Sector 7
+                    </option>
+                    <option value="35">
+                      Chopra Apartment, Dwarka Sector 23
+                    </option>
+                    <option value="36">
+                      Mohinder Apartments, Dwarka Sector 12
+                    </option>
+                    <option value="37">
+                      Chander Lok Apartment, Dwarka Sector 19
+                    </option>
+                    <option value="38">Neelachal, Dwarka Sector 5</option>
+                    <option value="39">Dwarka</option>
+                    <option value="40">
+                      MeeraBai Apartment, Dwarka Sector 5
+                    </option>
+                    <option value="41">
+                      Crescent Apartments, Dwarka Sector 18
+                    </option>
+                    <option value="42">
+                      Ashoka Enclave Apartment, Dwarka Sector 11
+                    </option>
+                    <option value="43">
+                      Nav Kairali Apartment, Dwarka Sector 3
+                    </option>
+                    <option value="44">Ashirwad Apartments, Dwarka</option>
+                    <option value="45">
+                      Indraprastha Apartment, Dwarka Sector 12
+                    </option>
+                    <option value="46">Mohinder Apartments, Dwarka</option>
+                    <option value="47">
+                      Ashoka Apartments, Dwarka Sector 12
+                    </option>
+                    <option value="48">Karuna Vihar Apartment, Dwarka</option>
+                    <option value="49">LNT Apartments, Dwarka</option>
+                    <option value="50">Dwarka Sector 4</option>
+                    <option value="51">Dwarka Sector 3</option>
+                    <option value="52">Dwarka Sector 16B</option>
+                    <option value="53">Vinoba Puri, Lajpat Nagar</option>
+                    <option value="54">Budh Vihar</option>
+                    <option value="55">Budh Vihar Phase 1</option>
+                    <option value="56">Budh Vihar Phase 2</option>
+                    <option value="57">
+                      Saptrishi Apartment, Rohini Sector 23
+                    </option>
+                    <option value="58">Rohini Sector 23</option>
+                    <option value="59">
+                      Rohini (1 km from Shahbad Dairy, Rohini)
+                    </option>
+                    <option value="60">
+                      The Leela Sky Villas, Patel Nagar
+                    </option>
+                    <option value="61">Uttam Nagar Floors, Uttam Nagar</option>
+                    <option value="62">Virat Residency, Dwarka Mor</option>
+                    <option value="63">Find Homes, Greater Kailash 2</option>
+                    <option value="64">Adarsh Homes, Dwarka Mor</option>
+                    <option value="65">Kushwaha Homes, Uttam Nagar</option>
+                    <option value="66">Godrej South Estate, Okhla</option>
+                    <option value="67">
+                      APL Builder Floor, Greater Kailash 1
+                    </option>
+                    <option value="68">Janakpuri Block A3</option>
+                    <option value="69">Greater Kailash 2</option>
+                    <option value="70">
+                      Partap Homes, Bhagwati Vihar, Uttam Nagar
+                    </option>
+                    <option value="71">The Amaryllis, Karol Bagh</option>
+                    <option value="72">
+                      Diamond Heights Multi Estate, Najafgarh
+                    </option>
+                    <option value="73">
+                      Vasant Vihar Builder Floor, Vasant Vihar
+                    </option>
+                    <option value="74">Vasant Kunj</option>
+                    <option value="75">Greater Kailash 1</option>
+                    <option value="76">Khanpur, Madangir</option>
+                    <option value="77">Batla House, Okhla</option>
+                    <option value="78">
+                      Friends Colony West, New Friends Colony
+                    </option>
+                    <option value="79">New Friends Colony</option>
+                    <option value="80">
+                      Maharani Bagh, New Friends Colony
+                    </option>
+                    <option value="81">
+                      Friends Colony East, New Friends Colony
+                    </option>
+                    <option value="82">
+                      Kalindi Colony, Maharani Bagh, New Friends Colony
+                    </option>
+                    <option value="83">
+                      Taimoor Enclave, New Friends Colony
+                    </option>
+                    <option value="84">
+                      New Friends Colony Floors, New Friends Colony
+                    </option>
+                    <option value="85">Kailash Colony, Greater Kailash</option>
+                    <option value="86">Ram Nagar, Shahdara</option>
+                    <option value="87">Jyoti Nagar West, Shahdara</option>
+                    <option value="88">
+                      Hans Apartments, Vishwas Nagar, Shahdara
+                    </option>
+                    <option value="89">Naveen Shahdara, Shahdara</option>
+                    <option value="90">Balbir Nagar, Shahdara</option>
+                    <option value="91">Rohitash Nagar East, Shahdara</option>
+                    <option value="92">Shahdara</option>
+                    <option value="93">Vishwas Nagar, Shahdara</option>
+                    <option value="94">
+                      DDA RPS Flats, Mansarowar Park, Shahdara
+                    </option>
+                    <option value="95">Yamuna Vihar, Shahdara</option>
+                    <option value="96">Rohtash Nagar, Shahdara</option>
+                    <option value="97">Ram Nagar Extension, Shahdara</option>
+                    <option value="98">Maujpur, Shahdara</option>
+                    <option value="99">Mansarowar Park, Shahdara</option>
+                    <option value="100">Gorakh Park West, Shahdara</option>
+                    <option value="101">Shivnam Apartment, Shahdara</option>
+                    <option value="102">Jyoti Colony, Shahdara</option>
+                    <option value="103">
+                      Ahinsha Vatika, Ram Nagar, Shahdara
+                    </option>
+                    <option value="104">Laxmi Nagar</option>
+                    <option value="105">
+                      Guru Angad Nagar West, Laxmi Nagar
+                    </option>
+                    <option value="106">Lalita Park, Laxmi Nagar</option>
+                    <option value="107">Krishan Kunj, Laxmi Nagar</option>
+                    <option value="108">Bank Enclave, Laxmi Nagar</option>
+                    <option value="109">Uttam Nagar</option>
+                    <option value="110">Dwarka Mor</option>
+                    <option value="111">Uttam Nagar West</option>
+                    <option value="112">SB Residency, Dwarka Mor</option>
+                    <option value="113">Kiran Garden, Uttam Nagar</option>
+                    <option value="114">Mohan Garden, Razapur Khurd</option>
+                    <option value="115">Mitya Homes, Dwarka Mor</option>
+                    <option value="116">New Uttam Nagar, Uttam Nagar</option>
+                    <option value="117">Patel Nagar South, Patel Nagar</option>
+                    <option value="118">Patel Nagar West</option>
+                    <option value="119">Patel Nagar East, Patel Nagar</option>
+                    <option value="120">Punjabi Basti, Patel Nagar</option>
+                    <option value="121">Baljit Nagar, Patel Nagar</option>
+                    <option value="122">
+                      DDA Flats Vasant Kunj, Vasant Kunj Sector B
+                    </option>
+                    <option value="123">
+                      DDA Flats Vasant Kunj, Vasant Kunj
+                    </option>
+                    <option value="124">
+                      DDA Flats Pocket 1, Vasant Kunj Sector B
+                    </option>
+                    <option value="125">
+                      Saraswati Narmada Ganga Yamuna Apartment, Vasant Kunj
+                      Sector D
+                    </option>
+                    <option value="126">
+                      DDA Flats Sector E Pocket 1, Vasant Kunj
+                    </option>
+                    <option value="127">
+                      DDA Flats Vasant Kunj, Vasant Kunj Sector D
+                    </option>
+                    <option value="128">Vasant Kunj Sector A</option>
+                    <option value="129">E2 Vasant Kunj, Vasant Kunj</option>
+                    <option value="130">
+                      Ganga Apartment Sector D Pocket 6, Vasant Kunj
+                    </option>
+                    <option value="131">Vasant Kunj Sector C</option>
+                    <option value="132">Vasant Kunj Sector D</option>
+                    <option value="133">
+                      DDA Flats Vasant Kunj, Vasant Kunj Sector C
+                    </option>
+                    <option value="134">Kishangarh, Vasant Kunj</option>
+                    <option value="135">
+                      DDA Pocket 1, Vasant Kunj Sector D
+                    </option>
+                    <option value="136">Vasant Kunj Sector B</option>
+                    <option value="137">Gandhi Nagar, Shahdara</option>
+                    <option value="138">
+                      DDA Flats Mansarovar Park, Seelampur, Shahdara
+                    </option>
+                    <option value="139">Seelampur, Shahdara</option>
+                    <option value="140">Shanti Mohalla, Shahdara</option>
+                    <option value="141">Rajgarh Colony, Shahdara</option>
+                    <option value="142">Kanti Nagar East, Shahdara</option>
+                    <option value="143">Raghubarpura, Shahdara</option>
+                    <option value="144">Sukhdev Vihar, Okhla</option>
+                    <option value="145">Geeta Colony</option>
+                    <option value="146">Krishna Nagar Block A</option>
+                    <option value="147">Taj Enclave, Khairatabad</option>
+                    <option value="148">Shastri Park, Shahdara</option>
+                    <option value="149">Sitaram Bazar, Chandni Chowk</option>
+                    <option value="150">Saket</option>
+                    <option value="151">Anupam Enclave, Saket</option>
+                    <option value="152">RWA Flats, Saket</option>
+                    <option value="153">Metrotech Builder Floors, Saket</option>
+                    <option value="154">
+                      Saket Court Residential Complex, Saket
+                    </option>
+                    <option value="155">Press Enclave Society, Saket</option>
+                    <option value="156">
+                      Project Paryavaran Complex, Saket
+                    </option>
+                    <option value="157">Safdarjung Enclave</option>
+                    <option value="158">Arjun Nagar, Safdarjung Enclave</option>
+                    <option value="159">
+                      Krishna Nagar-Safdarjung Enclave
+                    </option>
+                    <option value="160">
+                      Reserve Bank Enclave, Paschim Vihar
+                    </option>
+                    <option value="161">Paschim Vihar</option>
+                    <option value="162">Pushkar Enclave, Paschim Vihar</option>
+                    <option value="163">Paschim Vihar Block B2</option>
+                    <option value="164">Paschimpuri, Paschim Vihar</option>
+                    <option value="165">Paschim Vihar Block B4</option>
+                    <option value="166">DDA Lig Flats, Paschim Vihar</option>
+                    <option value="167">
+                      Archana Apartment, Paschim Vihar
+                    </option>
+                    <option value="168">
+                      Guru Harikishan Nagar, Paschim Vihar
+                    </option>
+                    <option value="169">Mianwali Nagar, Paschim Vihar</option>
+                    <option value="170">
+                      Navbharat Apartment, Paschim Vihar Block B1
+                    </option>
+                    <option value="171">Paschim Vihar Block A2</option>
+                    <option value="172">LIC Colony, Paschim Vihar</option>
+                    <option value="173">Shubh Niketan, Paschim Vihar</option>
+                    <option value="174">
+                      Ashoka Apartment, Paschim Vihar Block A2
+                    </option>
+                    <option value="175">
+                      Sunder Apartments, Sunder Vihar, Paschim Vihar
+                    </option>
+                    <option value="176">
+                      Rajasthan Apartment, Aashirwaad Chowk, Dwarka
+                    </option>
+                    <option value="177">
+                      Gold Croft Apartment, Aashirwaad Chowk, Dwarka
+                    </option>
+                    <option value="178">
+                      Chanakya Apartments, Aashirwaad Chowk, Dwarka
+                    </option>
+                    <option value="179">
+                      Bank Apartments, Aashirwaad Chowk, Dwarka
+                    </option>
+                    <option value="180">
+                      Mohinder Apartments, Aashirwaad Chowk, Dwarka
+                    </option>
+                    <option value="181">Aashirwaad Chowk, Dwarka</option>
+                    <option value="182">
+                      Saheta Apartment, Aashirwaad Chowk, Dwarka
+                    </option>
+                    <option value="183">
+                      Pushpanjali Apartments, Aashirwaad Chowk, Dwarka
+                    </option>
+                    <option value="184">
+                      Green Heavens Apartment, Aashirwaad Chowk, Dwarka
+                    </option>
+                    <option value="185">
+                      Hum Sub Apartment, Aashirwaad Chowk, Dwarka
+                    </option>
+                    <option value="186">
+                      Defence Officers Apartment, Aashirwaad Chowk, Dwarka
+                    </option>
+                    <option value="187">
+                      Sanchar Vihar Apartment, Aashirwaad Chowk, Dwarka
+                    </option>
+                    <option value="188">
+                      Sarve Satyam Apartment, Aashirwaad Chowk, Dwarka
+                    </option>
+                    <option value="189">
+                      Palm Green Apartment, Aashirwaad Chowk, Dwarka
+                    </option>
+                    <option value="190">
+                      Neelachal, Aashirwaad Chowk, Dwarka
+                    </option>
+                    <option value="191">
+                      Kailash Apartments, Aashirwaad Chowk, Dwarka
+                    </option>
+                    <option value="192">
+                      New Jyoti Apartments, Aashirwaad Chowk, Dwarka
+                    </option>
+                    <option value="193">
+                      PNB Employees Apartment, Aashirwaad Chowk, Dwarka
+                    </option>
+                    <option value="194">
+                      Sadbhawna CGHS, Aashirwaad Chowk, Dwarka
+                    </option>
+                    <option value="195">Commonwealth Games Village 2010</option>
+                    <option value="196">
+                      Common Wealth Games Village, Commonwealth Games Village
+                      2010
+                    </option>
+                    <option value="197">
+                      Project Commonwealth Games Village 2010, Akshardham Temple
+                    </option>
+                    <option value="198">
+                      Project Commonwealth Games Village 2010, Commonwealth
+                      Games Village 2010
+                    </option>
+                    <option value="199">Alaknanda</option>
+                    <option value="200">Shivalik Apartments, Alaknanda</option>
+                    <option value="201">Narmada Apartment, Alaknanda</option>
+                    <option value="202">Gangotri Enclave, Alaknanda</option>
+                    <option value="203">Aravali Apartments, Alaknanda</option>
+                    <option value="204">Tara Apartment, Alaknanda</option>
+                    <option value="205">Greater Kailash 4 Nri Colony</option>
+                    <option value="206">
+                      Project Gangotri Enclave, Alaknanda
+                    </option>
+                    <option value="207">
+                      Project Gangotri Enclave, Gangotri Enclave, Alaknanda
+                    </option>
+                    <option value="208">Nilgiri Apartment, Alaknanda</option>
+                    <option value="209">Yamuna Apartment, Alaknanda</option>
+                    <option value="210">Sarita Vihar, Mathura Road</option>
+                    <option value="211">
+                      DDA Flats, Sarita Vihar, Mathura Road
+                    </option>
+                    <option value="212">
+                      DDA Flats Sarita Vihar, Sarita Vihar, Mathura Road
+                    </option>
+                    <option value="213">
+                      DDA Flats Sarita Vihar, Sarita Vihar Pocket K
+                    </option>
+                    <option value="214">
+                      Sidharth Enclave, Kilokri, Ring Road
+                    </option>
+                    <option value="215">Sarita Vihar Pocket B</option>
+                    <option value="216">Sarita Vihar Pocket F</option>
+                    <option value="217">New Manglapuri, Sultanpur</option>
+                    <option value="218">Sultanpur Extension</option>
+                    <option value="219">Sultanpur</option>
+                    <option value="220">Manglapuri, Sultanpur</option>
+                    <option value="221">Indra Park Palam, Manglapuri</option>
+                    <option value="222">Chhattarpur</option>
+                    <option value="223">JVTS Gardens, Chhattarpur</option>
+                    <option value="224">Chhattarpur Enclave Phase2</option>
+                    <option value="225">
+                      DLF Chattarpur Farms, Chhattarpur
+                    </option>
+                    <option value="226">Aravali Tower, Chhattarpur</option>
+                    <option value="227">Mehrauli</option>
+                    <option value="228">Andheria Mor, Mehrauli</option>
+                    <option value="229">Brijwasi Colony, Mehrauli</option>
+                    <option value="230">Mahavir Enclave</option>
+                    <option value="231">Mahavir Enclave Part 1</option>
+                    <option value="232">Mahavir Enclave Part 3</option>
+                    <option value="233">Vijay Enclave, Mahavir Enclave</option>
+                    <option value="234">Narela Sector A1</option>
+                    <option value="235">
+                      DDA Flats Pocket 6 Sector A10, Narela
+                    </option>
+                    <option value="236">
+                      DDA Flats Pocket 1 Sector A9, Narela
+                    </option>
+                    <option value="237">
+                      DDA Janta Flats, Tikri Khurd Sector B2, Narela
+                    </option>
+                    <option value="238">Narela</option>
+                    <option value="239">DDA Lig Flats, Narela</option>
+                    <option value="240">DDA Flats Pocket 3, Narela</option>
+                    <option value="241">DDA Pocket H, Narela</option>
+                    <option value="242">Narela Mandi</option>
+                    <option value="243">Bhorgarh, Narela</option>
+                    <option value="244">Narela Sector A9</option>
+                    <option value="245">Narela Sector A5</option>
+                    <option value="246">Malviya Nagar</option>
+                    <option value="247">Shivalik, Malviya Nagar</option>
+                    <option value="248">
+                      Geetanjali Enclave, Malviya Nagar
+                    </option>
+                    <option value="249">
+                      Geetanjali Enclave Project, Geetanjali Enclave, Malviya
+                      Nagar
+                    </option>
+                    <option value="250">Khirki extension, Malviya Nagar</option>
+                    <option value="251">Dilshad Colony, Dilshad Garden</option>
+                    <option value="252">
+                      Guru Teg Bahadur Enclave, Dilshad Garden
+                    </option>
+                    <option value="253">Dilshad Garden</option>
+                    <option value="254">
+                      DDA Flats Block A, Dilshad Garden
+                    </option>
+                    <option value="255">DDA Pocket JK, Dilshad Garden</option>
+                    <option value="256">DDA Pocket E, Dilshad Garden</option>
+                    <option value="257">
+                      DDA Flats Pocket O, Dilshad Garden
+                    </option>
+                    <option value="258">DDA Pocket I, Dilshad Garden</option>
+                    <option value="259">Vasundhara Enclave</option>
+                    <option value="260">
+                      Samrat Apartment, Vasundhara Enclave
+                    </option>
+                    <option value="261">
+                      Mangal Apartment, Vasundhara Enclave
+                    </option>
+                    <option value="262">
+                      Prayag Apartments, Vasundhara Enclave
+                    </option>
+                    <option value="263">
+                      Abhimanyu Apartments, Vasundhara Enclave
+                    </option>
+                    <option value="264">
+                      Fancy Apartments, Vasundhara Enclave
+                    </option>
+                    <option value="265">
+                      Shantidoot Apartment, Vasundhara Enclave
+                    </option>
+                    <option value="266">
+                      Satyam Apartment, Vasundhara Enclave
+                    </option>
+                    <option value="267">
+                      Anekant Apartment, Vasundhara Enclave
+                    </option>
+                    <option value="268">
+                      New Delhi Apartment, Vasundhara Enclave
+                    </option>
+                    <option value="269">
+                      Mahesh Apartment, Vasundhara Enclave
+                    </option>
+                    <option value="270">
+                      Pawittra Apartment, Vasundhara Enclave
+                    </option>
+                    <option value="271">
+                      Capital Apartment, Vasundhara Enclave
+                    </option>
+                    <option value="272">
+                      Hindon Apartment, Vasundhara Enclave
+                    </option>
+                    <option value="273">
+                      Gobind Apartment, Vasundhara Enclave
+                    </option>
+                    <option value="274">
+                      Abul Fazal Enclave Part 1, Okhla
+                    </option>
+                    <option value="275">
+                      Godrej South Estate, Okhla Phase 1
+                    </option>
+                    <option value="276">
+                      Abul Fazal Enclave Part-II, Okhla
+                    </option>
+                    <option value="277">Jamia Nagar, Okhla</option>
+                    <option value="278">Zakir Nagar, New Friends Colony</option>
+                    <option value="279">
+                      Batla House Project, Batla House, Okhla
+                    </option>
+                    <option value="280">Dev Nagar, Karol Bagh</option>
+                    <option value="281">Beadon Pura, Karol Bagh</option>
+                    <option value="282">
+                      DDA Mig Flat, Prasad Nagar, Karol Bagh
+                    </option>
+                    <option value="283">Karol Bagh</option>
+                    <option value="284">Prasad Nagar, Karol Bagh</option>
+                    <option value="285">
+                      DDA MIG Flats Prasad Nagar Phase 2, Prasad Nagar, Karol
+                      Bagh
+                    </option>
+                    <option value="286">
+                      DLF Capital Greens, Moti Nagar, Kirti Nagar
+                    </option>
+                    <option value="287">
+                      DLF Capital Greens, New Moti Nagar, Kirti Nagar
+                    </option>
+                    <option value="288">New Moti Nagar, Kirti Nagar</option>
+                    <option value="289">Sheikh Sarai Phase 1</option>
+                    <option value="290">Sheikh Sarai</option>
+                    <option value="291">Sheikh Sarai Phase 2</option>
+                    <option value="292">
+                      Savitri Nagar Village, Sheikh Sarai
+                    </option>
+                    <option value="293">
+                      Punjabi Bagh Enclave, Punjabi Bagh West
+                    </option>
+                    <option value="294">Punjabi Bagh</option>
+                    <option value="295">Punjabi Bagh West</option>
+                    <option value="296">
+                      Punjabi Bagh Enclave, Shivaji Park, Punjabi Bagh
+                    </option>
+                    <option value="297">
+                      Punjabi Bagh Extension, Punjabi Bagh
+                    </option>
+                    <option value="298">
+                      DLF Capitals Phase III, Shivaji Park, Punjabi Bagh
+                    </option>
+                    <option value="299">
+                      Punjabi Bagh Enclave, Punjabi Bagh
+                    </option>
+                    <option value="300">
+                      Punjabi Bagh Enclave, Madipur, Punjabi Bagh
+                    </option>
+                    <option value="301">Bhagwan Das Nagar, Punjabi Bagh</option>
+                    <option value="302">Punjabi Bagh East</option>
+                    <option value="303">
+                      Pal Mohan Apartments, Punjabi Bagh
+                    </option>
+                    <option value="304">Govindpuri Extension, Kalkaji</option>
+                    <option value="305">Kalkaji</option>
+                    <option value="306">DDA LIG Flat, Kalkaji</option>
+                    <option value="307">Giri Nagar, Kalkaji</option>
+                    <option value="308">Rishi Apartment, Kalkaji</option>
+                    <option value="309">Deshbandhu Apartments, Kalkaji</option>
+                    <option value="310">DDA Janta Flats, Kalkaji</option>
+                    <option value="311">Kalkaji Extension</option>
+                    <option value="312">
+                      Mandakini Enclave Project, Kalkaji
+                    </option>
+                    <option value="313">Hauz Khas</option>
+                    <option value="314">
+                      Hauz Khas Apartment, Hauz Khas Enclave, Hauz Khas
+                    </option>
+                    <option value="315">
+                      Sarva Priya Apartment, Hauz Khas
+                    </option>
+                    <option value="316">Hauz Khas Enclave, Hauz Khas</option>
+                    <option value="317">
+                      Safdarjung Development Area, Hauz Khas
+                    </option>
+                    <option value="318">Mayfair garden, Hauz Khas</option>
+                    <option value="319">Orchid Metropolis, Hauz Khas</option>
+                    <option value="320">Chittaranjan Park</option>
+                    <option value="321">
+                      Arya Chittaranjan Park, Chittaranjan Park
+                    </option>
+                    <option value="322">Nehru Enclave, Kalkaji</option>
+                    <option value="323">Chittaranjan Park Block A</option>
+                  </select>
+                </div>
+                <!-- -->
+                <!--parking-->
+                <div class="input-wrapper">
+                  <label for="search" class="input-label"
+                    >Parking Space: *</label
+                  >
+                  <input
+                    type="text"
+                    name="park"
+                    placeholder="Parking Space"
+                    required
+                    class="input-field"
+                  />
+                  <ion-icon name="search-outline"></ion-icon>
+                </div>
+                <!--status-->
+                <div class="input-wrapper">
+                  <label for="category" class="input-label">Status</label>
+                  <select
+                    name="status"
+                    id="category"
+                    class="dropdown-list"
+                    required
+                  >
+                    <option value="0">Ready to Move</option>
+                    <option value="1">Almost Ready</option>
+                  </select>
+                </div>
+
+                <div class="input-wrapper">
+                  <label for="min-price" class="input-label"
+                    >Transaction :</label
+                  >
+                  <select
+                    name="tran"
+                    id="min-price"
+                    class="dropdown-list"
+                    required
+                  >
+                    <option value="0">New Property</option>
+                    <option value="1">Resale</option>
+                  </select>
+                </div>
+
+                <div class="input-wrapper">
+                  <label for="max-price" class="input-label">Type :</label>
+                  <select
+                    name="type"
+                    id="max-price"
+                    class="dropdown-list"
+                    required
+                  >
+                    <option value="0">Builder Floor</option>
+                    <option value="1">Apartment</option>
+                  </select>
+                </div>
+                <div class="input-wrapper">
+                  <label for="search" class="input-label"
+                    >Price per sq ft: *</label
+                  >
+                  <input
+                    type="text"
+                    name="persq"
+                    placeholder="Price per sq ft"
+                    required
+                    class="input-field"
+                  />
+                  <ion-icon name="search-outline"></ion-icon>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                  Predict Now
+                </button>
+              </form>
+              <div class="prediction">{{prediction_text}}</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section about" id="about" aria-level="about">
+          <div class="container">
+            <div
+              class="about-banner img-holder"
+              style="--width: 600; --height: 700"
+            >
+              <img
+                src="https://th.bing.com/th/id/R.624cc0d6df8dc1d88cc52dd8203f6514?rik=qfp%2foUgXhFRXyg&riu=http%3a%2f%2fimg.groundspeak.com%2fwaymarking%2flog%2f642843ae-3ec4-463f-aa29-26f61c836c77.JPG&ehk=CJdn3fvtCMK7HxaSVTzDdXgtpnTdFEEilmkuN6Judfc%3d&risl=&pid=ImgRaw&r=0"
+                width="600px"
+                height="700px"
+                loading="lazy"
+                alt=""
+                class="img-cover"
+              />
+            </div>
+
+            <div class="about-content">
+              <h2 class="h2 section-title">Trusted. Affordable. Transparent</h2>
+              <p class="section-text">
+                A house prediction system using a Random Forest Regressor,
+                builds multiple decision trees from historical data to
+                accurately predict outcomes by averaging their predictions for
+                improved robustness and accuracy
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!--========== SECTION ==========-->
+        <section class="section service" id="service" aria-label="service">
+          <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-text">
+              A house prediction system using a Random Forest Regressor, builds
+              multiple decision trees from historical data to accurately predict
+              outcomes by averaging their predictions for improved robustness
+              and accuracy.
+            </p>
+            <ul class="service-list">
+              <li>
+                <div class="service-card">
+                  <div class="card-icon">
+                    <ion-icon name="analytics-outline"></ion-icon>
+                  </div>
+                  <h3 class="h3 card-title">Data Collection</h3>
+                  <p class="card-text">
+                    Gather historical data on house sales, including features
+                    like size, location, number of bedrooms, age, etc.
+                  </p>
+                </div>
+              </li>
+
+              <li>
+                <div class="service-card">
+                  <div class="card-icon">
+                    <ion-icon name="extension-puzzle-outline"></ion-icon>
+                  </div>
+                  <h3 class="h3 card-title">Random Forest Algorithm</h3>
+                  <p class="card-text">
+                    Create multiple decision trees using subsets of the training
+                    data and features. Each tree makes a prediction based on its
+                    learned patterns.
+                  </p>
+                </div>
+              </li>
+
+              <li>
+                <div class="service-card">
+                  <div class="card-icon">
+                    <ion-icon name="bar-chart-outline"></ion-icon>
+                  </div>
+
+                  <h3 class="h3 card-title">Prediction</h3>
+                  <p class="card-text">
+                    Use the trained model to predict house prices for new data
+                    points.
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+        <!--=========About===========-->
+        <section class="section service" id="About" aria-label="service">
+          <div class="container">
+            <ul class="service-list">
+              <li>
+                <div class="service-card">
+                  <div class="card-icon">
+                    <ion-icon name="person-outline"></ion-icon>
+                  </div>
+                  <h3 class="h3 card-title">Deepak kumar Raj</h3>
+                  <p class="card-text">
+                    UEM213112 <br />UIET, Chandigarh <br />
+                    Panjab University
+                  </p>
+                </div>
+              </li>
+
+              <li>
+                <div class="service-card">
+                  <h3 class="h3 card-title"></h3>
+                  <p class="card-text">
+                  </p>
+                </div>
+              </li>
+
+              <li>
+                <div class="service-card">
+                  <div class="card-icon">
+                    <ion-icon name="person-outline"></ion-icon>
+                  </div>
+                  <h3 class="h3 card-title">Ayan Baidya</h3>
+                  <p class="card-text">
+                    UEM213108<br />UIET, Chandigarh <br />
+                    Panjab University
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!--========= CONTACT =========-->
+        <section class="section contact" id="contact" aria-label="contact">
+          <div class="container">
+            <h2 class="h2 section-title">Have a Question ? Get in touch</h2>
+
+            <p class="section-text">
+              A great platform to predict price of properties without any cost
+            </p>
+            <button class="btn btn-primary">
+              <ion-icon name="call-outline"></ion-icon>
+              <span class="span"
+                ><a href="mailto:ayanbaidya5423@gmail.com">Contact us</a></span
+              >
+            </button>
+          </div>
+        </section>
+
+        <!--======= FOOTER ========-->
+        <footer class="footer">
+          <div class="footer-top">
+            <div class="container">
+              <div class="footer-brand">
+                <a href="#" class="logo">
+                  <ion-icon name="home-outline"></ion-icon> Realestate
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <div class="container">
+              <p class="copyright">
+                <a href="#" class="copyright-link">Ayan</a>
+              </p>
+            </div>
+          </div>
+        </footer>
+
+        <!--=========== BACK-TO-TOP ==========-->
+        <a
+          href="#top"
+          class="back-top-btn"
+          aria-label="back to top"
+          data-back-top-btn
+        >
+          <ion-icon name="arrow-up" aria-hidden="true"></ion-icon>
+        </a>
+      </article>
+    </main>
+
+    <!-- js -->
+    <script>
+      "use strict";
+
+      const addEventOnElement = function (element, type, listener) {
+        if (element.length > 1) {
+          for (let i = 0; i < element.length; i++) {
+            element[i].addEventListener(type, listener);
+          }
+        } else {
+          element.addEventListener(type, listener);
+        }
+      };
+
+      //============ NAVBAR ===============//
+      const navbar = document.querySelector("[data-navbar]");
+      const navLinks = document.querySelector("[data-nav-link]");
+      const navToggler = document.querySelector("[data-nav-toggler]");
+
+      const toggleNav = function () {
+        navbar.classList.toggle("active");
+        this.classList.toggle("active");
+      };
+
+      addEventOnElement(navToggler, "click", toggleNav);
+
+      const closeNav = function () {
+        navbar.classList.remove("active");
+        navToggler.classList.remove("active");
+      };
+
+      addEventOnElement(navLinks, "clicks", closeNav);
+
+      // Adding the active class to the header
+      const header = document.querySelector("[data-header]");
+      const backTopBtn = document.querySelector("[data-back-top-btn]");
+
+      window.addEventListener("scroll", function () {
+        if (this.window.scrollY >= 50) {
+          header.classList.add("active");
+          backTopBtn.classList.add("active");
+        } else {
+          header.classList.remove("active");
+          backTopBtn.classList.remove("active");
+        }
+      });
+
+      // Tab Button
+      const tabBtns = document.querySelectorAll("[data-tab-btn]");
+
+      let lastClickedTabBtn = tabBtns[0];
+
+      const changeTab = function () {
+        lastClickedTabBtn.classList.remove("active");
+        this.classList.add("active");
+        lastClickedTabBtn = this;
+      };
+
+      addEventOnElement(tabBtns, "click", changeTab);
+    </script>
+
+    <!-- ionicon link-->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>
